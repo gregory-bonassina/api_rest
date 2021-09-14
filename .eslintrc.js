@@ -16,5 +16,6 @@ module.exports = {
     'import/first': 'off',
     'quote-props': 'off',
     'no-param-reassign': 'off',
+    'camelcase': 'off',
   },
 };
