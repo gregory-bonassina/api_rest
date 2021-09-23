@@ -17,7 +17,7 @@ import fotoRoutes from './routes/fotoRoutes';
 
 const whiteList = [
   'https://react.gbonassina.com.br',
-  'http://localhost:3000',
+  // 'http://localhost:3000',
 ];
 
 const corsOptions = {
