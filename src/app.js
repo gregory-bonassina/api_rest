@@ -16,7 +16,7 @@ import alunoRoutes from './routes/alunoRoutes';
 import fotoRoutes from './routes/fotoRoutes';
 
 const whiteList = [
-  'http://gregorybonassina.com.br',
+  'https://api.gbonassina.com.br',
   'http://localhost:3000',
 ];
 
