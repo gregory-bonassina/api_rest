@@ -3,15 +3,27 @@ import Foto from '../models/Foto';
 
 class AlunoController {
   async index(req, res) {
-    const alunos = await Aluno.findAll({
-      attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
-      order: [['id', 'DESC'], [Foto, 'id', 'DESC']],
-      include: {
-        model: Foto,
-        attributes: ['url', 'filename'],
-      },
-    });
-    res.json(alunos);
+    try {
+      const { id } = req.params;
+      console.log(id);
+      const alunos = await Aluno.findAll({
+        where: {
+          user_id: id,
+        },
+        attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura', 'user_id'],
+        order: [['id', 'DESC'], [Foto, 'id', 'DESC']],
+        include: {
+          model: Foto,
+          attributes: ['url', 'filename'],
+        },
+      });
+      return res.json(alunos);
+    } catch (e) {
+      console.log(e);
+      return res.status(400).json({
+        errors: ['Erro'],
+      });
+    }
   }
 
   async store(req, res) {
