@@ -3,15 +3,27 @@ var _Foto = require('../models/Foto'); var _Foto2 = _interopRequireDefault(_Foto
 
 class AlunoController {
   async index(req, res) {
-    const alunos = await _Aluno2.default.findAll({
-      attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
-      order: [['id', 'DESC'], [_Foto2.default, 'id', 'DESC']],
-      include: {
-        model: _Foto2.default,
-        attributes: ['url', 'filename'],
-      },
-    });
-    res.json(alunos);
+    try {
+      const { id } = req.params;
+      console.log(id);
+      const alunos = await _Aluno2.default.findAll({
+        where: {
+          user_id: id,
+        },
+        attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura', 'user_id'],
+        order: [['id', 'DESC'], [_Foto2.default, 'id', 'DESC']],
+        include: {
+          model: _Foto2.default,
+          attributes: ['url', 'filename'],
+        },
+      });
+      return res.json(alunos);
+    } catch (e) {
+      console.log(e);
+      return res.status(400).json({
+        errors: ['Erro'],
+      });
+    }
   }
 
   async store(req, res) {

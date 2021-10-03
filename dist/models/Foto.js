@@ -34,8 +34,4 @@ var _appConfig = require('../config/appConfig'); var _appConfig2 = _interopRequi
     });
     return this;
   }
-
-  static associate(models) {
-    this.belongsTo(models.Aluno, { foreignKey: 'aluno_id' });
-  }
 } exports.default = Foto;

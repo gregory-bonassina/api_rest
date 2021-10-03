@@ -17,7 +17,7 @@ var _fotoRoutes = require('./routes/fotoRoutes'); var _fotoRoutes2 = _interopReq
 
 const whiteList = [
   'https://react.gbonassina.com.br',
-  // 'http://localhost:3000',
+  'http://localhost:3000',
 ];
 
 const corsOptions = {
